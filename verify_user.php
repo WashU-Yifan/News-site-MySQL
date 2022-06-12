@@ -2,7 +2,8 @@
 require 'database.php';
 
 // Use a prepared statement
-$stmt = $mysqli->prepare("SELECT COUNT(*), id, hashed_password FROM users WHERE username=?");
+$stmt = $mysqli->prepare("SELECT COUNT(*), hashed_password FROM users WHERE username = ?");
+
 
 // Bind the parameter
 //check for SQL injection& filter input
@@ -15,16 +16,19 @@ if( !preg_match('/^[\w_\-]+$/', $user) ){
 
 }
 
-$stmt->bind_param('s', $user);
-$stmt->execute();
 
+$stmt->bind_param('s', $user);
+
+$stmt->execute();
+/*
 // Bind the results
-$stmt->bind_result($cnt, $user_id, $pwd_hash);
+$stmt->bind_result($cnt, $pwd_hash);
 $stmt->fetch();
 
 $pwd_guess = $_POST['password'];
 // Compare the submitted password to the actual password hash
-
+echo "here2";
+/*
 if($cnt == 1 && password_verify($pwd_guess, $pwd_hash)){
 	// Login succeeded!
 	$_SESSION['user_id'] = $user_id;
@@ -36,4 +40,5 @@ if($cnt == 1 && password_verify($pwd_guess, $pwd_hash)){
     echo "Could not verify your login credential, try again."
     header("refresh:2; url=user_login.html");
 }
+*/
 ?>

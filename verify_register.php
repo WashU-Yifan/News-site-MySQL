@@ -1,6 +1,6 @@
 <?php
 require 'database.php';
-
+/*
 // Use a prepared statement
 $stmt = $mysqli->prepare("SELECT COUNT(*)FROM users WHERE username=?");
 
@@ -34,10 +34,11 @@ if($cnt == 1 ){
     header("refresh:2; url=register.html");
     exit;
 } else{
+    */
 	// register success
     $password_hash= password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-    $stmt = $mysqli->prepare("insert into users (username, password) values (?, ?)");
+    echo $password_hash;
+    $stmt = $mysqli->prepare("insert into users (username, hashed_password) values (?, ?)");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
@@ -52,5 +53,5 @@ if($cnt == 1 ){
         echo "register success!";
         header("refresh:2; url=user_login.html");
         exit;
-}
+
 ?>
