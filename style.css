@@ -10,11 +10,32 @@ h1{
     font-family: 'Times New Roman', Times, serif;
 }
 
+h2{
+    color: rgb(6, 6, 31);
+    text-align: center;
+    font-size: 40px;
+
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h3{
+    color: rgb(6, 6, 31);
+    
+    font-size: 35px;
+
+    font-family: 'Times New Roman', Times, serif;
+}
 p{
     
     font-size: 30px;
     color: rgb(0, 2, 9);
-    text-align: center;
+    
     font-family: 'Times New Roman', Times, serif;
 
+}
+table,tr,th {
+    border:2px solid black;
+    font-size: 30px;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
 }
