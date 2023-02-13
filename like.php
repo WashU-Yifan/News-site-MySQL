@@ -8,7 +8,14 @@
 <?php 
     require "database.php";
     session_start();
-
+    //detect CSRF attack
+    if(!hash_equals($_SESSION['token'],$_POST['token'])){
+        echo "<p>Request forgery detected</p>";
+        session_destroy();
+        header("refresh:2; url=user_login.php");
+        exit;
+    }       
+        
     //need to login to like a story
     if(!$_SESSION['user_id']){
         echo "<p>Must login first.</p>";

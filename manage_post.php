@@ -19,7 +19,7 @@
         require "database.php";
         session_start();
         $username =$_SESSION['username'];
-        
+
         if($username)
         {
             printf("<form action='logout.php' method='POST'>
@@ -75,11 +75,7 @@
                     
                     <input type="hidden" name ="storyid" value='<?php echo "$story_id";?>'/>
                     <input type="hidden" name ="token" value=
-                    "<?php 
-                        session_start();
-                        $_SESSION['token']=bin2hex(random_bytes(32));  
-                        echo $_SESSION['token'];
-                        ?>"/>
+                    "<?php echo $_SESSION['token'];?>"/>
                     <input type="submit" value="delete story" />
                     
                 </form>
@@ -88,9 +84,7 @@
                
                <input type="hidden" name ="storyid" value='<?php echo "$story_id";?>'/>
                <input type="hidden" name ="token" value=
-                "<?php 
-                    session_start();
-                    $_SESSION['token']=bin2hex(random_bytes(32));  
+                "<?php  
                     echo $_SESSION['token'];
                     ?>"/>
                <input type="submit" value="edit story" />
@@ -133,7 +127,6 @@
                     <input type="hidden" name ="token" value=
                     "<?php 
                         session_start();
-                        $_SESSION['token']=bin2hex(random_bytes(32));  
                         echo $_SESSION['token'];
                         ?>"/>
                     <input type="submit" value="delete comment" />
@@ -147,7 +140,6 @@
                <input type="hidden" name ="token" value=
                 "<?php 
                     session_start();
-                    $_SESSION['token']=bin2hex(random_bytes(32));  
                     echo $_SESSION['token'];
                     ?>"/>
                <input type="submit" value="edit comment" />

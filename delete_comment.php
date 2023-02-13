@@ -12,6 +12,7 @@
         //detect CSRF attack
         if(!hash_equals($_SESSION['token'],$_POST['token'])){
             echo "<p>Request forgery detected</p>";
+            session_destroy();
             header("refresh:2; url=user_login.php");
             exit;
         }

@@ -18,7 +18,7 @@
         <!-- username--> 
         username<input type="text" name="username"  /><br>
         password<input type="password" name="password"  /><br>
-        <input type="hidden" name ="token" value="<?php session_start(); echo $_SESSION['token'];?>"/>
+        <input type="hidden" name ="token" value="<?php  echo $_SESSION['token'];?>"/>
 
         <input type="submit" value="login" />
         <input type="reset" />

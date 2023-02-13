@@ -16,6 +16,12 @@
     <?php
         require "database.php";
         session_start();
+        if(!hash_equals($_SESSION['token'],$_POST['token'])){
+            echo "<p>Request forgery detected</p>";
+            session_destroy();
+            header("refresh:2; url=user_login.php");
+            exit;
+        }
         $username =(string)$_SESSION['username'];
         //need to login first publish a new story
         if($username)
@@ -41,8 +47,6 @@
     link<br><input type="text" name="link"  /><br>
     <input type="hidden" name ="token" value=
         "<?php 
-            session_start();
-            $_SESSION['token']=bin2hex(random_bytes(32));  
             echo $_SESSION['token'];
             ?>"/>
         <input type="submit" value="post" />

@@ -27,10 +27,13 @@
 
         <p> <form action="publish_story.php" method="POST">
                 <input type="submit" value="post news" />
+                <input type="hidden" name ="token" value="<?php  echo $_SESSION['token'];?>"/>
+
             </form>
         </p>
         <p> <form action="manage_post.php" method="POST">
                 <input type="submit" value="manage your posts" />
+                <input type="hidden" name ="token" value="<?php  echo $_SESSION['token'];?>"/>
             </form>
         </p>
        <?php
@@ -85,6 +88,7 @@
                 
                     <form action="show_comments.php" method="POST">
                         <td>
+                        <input type="hidden" name ="token" value="<?php  echo $_SESSION['token'];?>"/>
                         <input type="hidden" value='<?php echo "$story_id";?>' name ="storyid"/>
                         <input type="submit" value="more" />
                         </td>

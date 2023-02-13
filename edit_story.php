@@ -53,7 +53,6 @@
         <input type="hidden" name ="token" value=
         "<?php 
             session_start();
-            $_SESSION['token']=bin2hex(random_bytes(32));  
             echo $_SESSION['token'];
             ?>"/>
             <input type="submit" value="post" />

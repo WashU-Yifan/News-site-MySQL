@@ -11,9 +11,11 @@ require 'database.php';
 //detect CSRF attack
 if(!hash_equals($_SESSION['token'],$_POST['token'])){
     echo "<p>Request forgery detected</p>";
+    session_destroy();
     header("refresh:2; url=user_login.php");
     exit;
 }
+
 
 // Use a prepared statement
 $stmt = $mysqli->prepare("SELECT COUNT(*),id, hashed_password FROM users WHERE username = ?");
@@ -27,7 +29,6 @@ if( !preg_match('/^[\w_\-]+$/', $user) ){
     echo "<p>Invalid username</p>";
     header("refresh:2; url=user_login.php");
     exit;
-
 }
 $_SESSION['username']=$user;
 
@@ -55,5 +56,5 @@ if( $cnt==1 && password_verify($pwd_guess, $pwd_hash)){
 }
 
 ?>
-        </body>
+</body>
 </html>
